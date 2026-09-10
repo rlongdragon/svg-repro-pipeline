@@ -1,0 +1,23 @@
+# secrets
+.env
+
+# python
+venv/
+__pycache__/
+*.pyc
+
+# run outputs & private artifacts (contain rendered figures)
+runs/
+gallery/
+report_assets/
+_selftest/
+report.html
+
+# target images are private — keep them out of the repo
+targets/*.png
+targets/*.jpg
+targets/*.jpeg
+targets/*.svg
+
+# local config (may hold model ids you don't want public)
+config.yaml

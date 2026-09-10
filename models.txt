@@ -1,0 +1,6 @@
+# One model id per line, as your OpenAI-compatible endpoint names them.
+# Lines starting with # are ignored. These are examples — edit to your own.
+gpt-4o
+claude-sonnet-4
+gemini-2.5-pro
+gemini-2.5-flash

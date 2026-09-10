@@ -1,0 +1,12 @@
+Your previous SVG render does not yet match the TARGET.
+
+Similarity SSIM = {ssim}  (1.0 = perfect match).
+Biggest mismatch regions (pixel coordinates on the target image, x,y = top-left):
+{regions}
+
+You are shown three images below:
+  IMAGE 1 = TARGET (the ground truth you must reproduce).
+  IMAGE 2 = YOUR CURRENT RENDER.
+  IMAGE 3 = DIFF heatmap: pixels tinted RED differ between target and your render; red boxes mark the largest mismatch clusters.
+
+Study the differences — especially the listed regions and everything red in the diff. Then output the FULL corrected SVG in a ```svg fence. Focus on: missing or garbled text, wrong text content, wrong positions/sizes, wrong colors, misaligned or missing arrows/boxes, and any element that overflows or overlaps.

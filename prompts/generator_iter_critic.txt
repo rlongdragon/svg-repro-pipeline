@@ -1,0 +1,8 @@
+A reviewer compared your previous SVG render (IMAGE 2) against the TARGET (IMAGE 1) and did NOT pass it.
+
+Reviewer score: {score}/100.
+Issues to fix (most severe first):
+{issues}
+
+IMAGE 1 = TARGET (ground truth). IMAGE 2 = your current render.
+Address EVERY issue and output the FULL corrected SVG in a ```svg fence.

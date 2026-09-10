@@ -21,3 +21,10 @@ targets/*.svg
 
 # local config (may hold model ids you don't want public)
 config.yaml
+
+# demo/report prep scripts (not part of the product)
+collect_demo.py
+prep_showcase.py
+build_report.py
+demo_out/
+docs_showcase/

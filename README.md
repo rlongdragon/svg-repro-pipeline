@@ -24,6 +24,47 @@ This pipeline is the vectorizing back end for
 Full chain: *method text → figure prompt → rendered figure → editable SVG*.
 Drop the rendered figure into `targets/` and run the commands below.
 
+## How it works
+
+1. The model sees the target figure and emits a full SVG — semantic elements,
+   real `<text>` (so it stays editable), math in serif-italic.
+2. The SVG is rendered to PNG with headless Chromium (faithful CJK).
+3. Feedback: `diff` scores the render against the target and marks the
+   mismatches; `critic` has a reviewer model judge target-vs-render.
+4. The notes go back to the model, which returns a corrected SVG. Repeat until
+   it's good enough.
+
+The `diff` view scores structural similarity (SSIM) and paints mismatched pixels
+red, so the model sees exactly where the render drifts from the target:
+
+<img src="docs/showcase/_diff_example.jpg" width="640" alt="diff heatmap">
+
+## Showcase
+
+Each pair below: the original figure on the left, the pipeline's rendered SVG on
+the right. The right side is real SVG — every box and label is editable, not a
+traced bitmap.
+
+### DropGoLine — P2P architecture · SSIM 0.89
+| Original | Reproduced SVG |
+|---|---|
+| <img src="docs/showcase/dropgoline-architecture_original.jpg" width="420"> | <img src="docs/showcase/dropgoline-architecture_render.jpg" width="420"> |
+
+### ResidenceFly — Minecraft plugin · SSIM 0.84
+| Original | Reproduced SVG |
+|---|---|
+| <img src="docs/showcase/residencefly_architecture_original.jpg" width="420"> | <img src="docs/showcase/residencefly_architecture_render.jpg" width="420"> |
+
+### ArmorStandModel — math principle · SSIM 0.81
+| Original | Reproduced SVG |
+|---|---|
+| <img src="docs/showcase/ArmorStandModel-math_principle_original.jpg" width="420"> | <img src="docs/showcase/ArmorStandModel-math_principle_render.jpg" width="420"> |
+
+### CovaFlux — architecture · SSIM 0.80
+| Original | Reproduced SVG |
+|---|---|
+| <img src="docs/showcase/covaflux-architecture_original.jpg" width="420"> | <img src="docs/showcase/covaflux-architecture_render.jpg" width="420"> |
+
 ## Choosing models
 
 Benchmark your own models with `bench.py` and read the matrix it writes to
